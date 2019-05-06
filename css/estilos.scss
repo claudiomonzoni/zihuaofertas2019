@@ -1,0 +1,323 @@
+//fuentes roboto para body
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700,900');
+//reset
+@import 'reset';
+
+// media mixing sass
+
+$cel: 479px;
+$nocel: 479px;
+$tableta: 768px;
+$tableta-land: 1024px;
+$hd: 1600px;
+
+//colores
+$amarillo: #FCF22B;
+$azul:#3A00D6;
+$gris:#8393A7;
+
+@mixin cel {
+  @media (max-width: #{$cel}) {
+    @content;
+  }
+}
+@mixin nocel{
+@media (min-width: #{$nocel}){
+  @content;
+}
+}
+
+@mixin tableta_land {
+  @media (min-width: #{$tableta-land}) and (max-width: #{$hd - 1px}) {
+    @content;
+  }
+}
+
+@mixin tableta {
+  @media (min-width: #{$tableta - 1px}) and (max-width: #{$tableta-land - 1px}) {
+    @content;
+  }
+}
+
+@mixin hd {
+  @media (min-width: #{$hd}) {
+    @content;
+  }
+}
+
+.anima{
+  -webkit-transition:  width 0.5s, max-height 0.5s, transform 0.5s, color 0.5s ease-in-out ;
+  -o-transition: width 0.5s, max-height 0.5s, transform 0.5s, color 0.5s ease-in-out ;
+  transition:  width 0.5s, max-height 0.5s, transform 0.5s, color 0.5s ease-in-out ;
+}
+
+body{
+    font-size:19px;
+    font-family: roboto;
+    color: $azul;
+}
+section{
+  display: grid;
+  grid-template-columns: 10% 1fr 10%;
+}
+
+#menu{
+  background-color: $amarillo;
+  grid-column: 2;
+  grid-row: 1;
+  z-index: 300;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column: 1 / -1;
+  height: 100vh;
+  width: 100%;
+  max-height: 100vh;
+  //@extend .anima;
+ 
+
+  #mascara{
+    grid-column: 1 /-1;
+    margin: 1em 3.5em 0 0;
+    justify-self: end;
+    border-right: solid 1px $azul;
+    align-self: flex-start;
+    overflow: hidden;
+  
+  }
+  
+  .logo{
+    width: 120px;
+    height: auto;
+    transform: translateX(72px);
+    //@extend .anima;
+  }
+  
+ 
+  
+  ul{
+    opacity: 0;
+    grid-column: 1 / -1 ;
+    grid-row: 2/ span 1;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    border-top: solid 1px $azul;
+    border-bottom: solid 1px $azul;
+    align-self: center; // el alto lo determina el contenido y centro
+    li{
+      display: flex;
+      align-items: center;
+      @extend .anima;
+      img{
+        width: 50px;
+        height: auto;
+      }
+      &:hover{
+        color:#fff;
+      }
+
+    }
+
+   
+  }
+
+  #intro{
+    display: none;
+    grid-column: 1 /-1;
+padding: 1em;
+border-top: solid 1px $azul;
+margin: 0 1em;
+
+  }
+
+  #redes{
+    background-color: $azul;
+    grid-column: 1 / -1;
+    color: #fff;
+    padding: 1em;
+    align-self: center;
+    display: flex;
+    flex-wrap: nowrap;
+    @extend .anima;
+a{
+  color: #fff;
+  &:hover{
+    color: $amarillo;
+  }
+}
+
+i{
+  font-size: 1.6em;
+  padding: 0 0.2em;
+}
+
+  }
+
+
+  /*-----------menu cerrado -----*/
+  &.cerrado{
+
+  width:calc(100vw - 8em);
+  margin: 0 auto;
+  //grid-auto-rows: minmax(min-content, max-content);
+  align-self: start; // controlar el tamaño del alto en auto
+  height:auto;
+  max-height: 500px;
+
+
+  @include nocel{
+    width: calc( 100vw - 94%);
+    max-width: 20em;
+    margin: 0;
+    grid-column: 2; 
+  }
+  
+    #mascara{
+      border-right:none;
+      margin: 1em ;
+      justify-self: center;
+    }
+
+    .logo{
+      width: calc(100vw - 35em);
+      max-width: 200px;
+      min-width: 100px;
+        transform: translateX(0px);
+        margin-right: 0em;
+    }
+
+    ul{
+      display: none;
+    }
+
+    #intro{
+      display: block;
+    }
+    #redes{
+      display: none;
+    }
+  }
+}
+
+.animacion{
+  animation: menu;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+  animation-delay: 0.2s
+}
+
+.animaLogo{
+  animation: logo 0.5s alternate forwards ease-in-out;
+}
+@keyframes menu {
+  0% {opacity: 0; transform: translateY(-40px) }
+  100% {opacity: 1; transform: translateY(0px)}
+}
+
+@keyframes logo {
+  0% { transform: translateX(0px) }
+  100% { transform: translateX(72px)}
+}
+
+
+#hero{
+  background-color: $azul;
+  grid-column: 1/-1;
+  grid-row: 1;
+  height: 100vh;
+}
+
+// menu hamburguesa
+
+$buttonWidth: 30px;
+$buttonHeight: 26px;
+$buttonColor: $gris;
+$lineThickness: 4px;
+$transitionSpeed: .25s;
+$transitionEasing: ease-in-out;
+
+// Demo
+.menu-toggle {
+  position: absolute;
+  z-index: 500;
+  right: 25px;
+  top: 25px; 
+  //display: none;
+  /*
+  @include cel{
+      display: block;
+  }
+  */
+  width: $buttonWidth;
+  height: $buttonHeight;
+  
+  background: transparent;
+  border-top: $lineThickness solid;
+  border-bottom: $lineThickness solid;
+  
+  color: $buttonColor;
+  font-size: 0;
+  
+  transition: all $transitionSpeed $transitionEasing;
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: $lineThickness;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    background: currentColor;
+    
+    transform: translate(-50%, -50%);
+    transition: transform $transitionSpeed $transitionEasing;
+  } 
+}
+
+button:hover {
+  color: $azul;
+}
+
+button.is-active {
+  border-color: transparent;
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+
+button {
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+//.............
+
+//texto animado en header home
+
+.ml4 {
+  position: relative;
+  font-weight: 900;
+  font-size: 4.5em;
+}
+.ml4 .letters {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0.3em;
+  right: 0;
+  opacity: 0; 
+}
