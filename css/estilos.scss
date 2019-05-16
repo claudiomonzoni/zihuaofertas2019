@@ -1,5 +1,5 @@
 //fuentes roboto para body
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Asap:400,700|Ubuntu:300,400,700');
 //reset
 @import 'reset';
 
@@ -46,21 +46,95 @@ $gris:#8393A7;
 }
 
 .anima{
-  -webkit-transition:  width 0.5s, max-height 0.5s, transform 0.5s, color 0.5s ease-in-out ;
-  -o-transition: width 0.5s, max-height 0.5s, transform 0.5s, color 0.5s ease-in-out ;
-  transition:  width 0.5s, max-height 0.5s, transform 0.5s, color 0.5s ease-in-out ;
+  -webkit-transition:  width 0.5s,  background-color 0.4s, max-height 0.5s, transform 0.5s, color 0.5s ease-in-out ;
+  -o-transition: width 0.5s,  background-color 0.4s,  max-height 0.5s, transform 0.5s, color 0.5s ease-in-out ;
+  transition:  width 0.5s, background-color 0.4s, max-height 0.5s, transform 0.5s, color 0.5s ease-in-out ;
+}
+
+.sombra{
+  -webkit-box-shadow: 0px 0px 11px -2px rgba(61,45,61,1);
+  -moz-box-shadow: 0px 0px 11px -2px rgba(61,45,61,1);
+  box-shadow: 0px 0px 11px -2px rgba(61,45,61,1);
 }
 
 body{
-    font-size:19px;
-    font-family: roboto;
+    font-family: 'Ubuntu', sans-serif;
     color: $azul;
+    font-size: calc(16px + (22 - 16) * ((100vw - 300px) / (1600 - 300)));
+    line-height: calc(1.4em + (1.6 - 1.4) * ((100vw - 300px) / (1600 - 300)));
 }
+h1, h2, h3{
+  font-family: 'Asap', sans-serif;
+  line-height: calc(1.1em + (1.3 - 1.1) * ((100vw - 300px) / (1600 - 300)));
+}
+h1{
+  font-size: calc(30px + (50 - 30) * ((100vw - 300px) / (1600 - 300)));
+
+  span{
+    display: flex;
+    justify-content: center;
+    margin: 1.5em 0 0.5em;
+  }
+
+  img{
+    max-width: calc(40px + (60 - 40) * ((100vw - 300px) / (1600 - 300)));
+    height: auto;
+  }
+}
+
+h2{
+  font-size: calc(20px + (30 - 20) * ((100vw - 300px) / (1600 - 300)));
+}
+
 section{
   display: grid;
   grid-template-columns: 10% 1fr 10%;
 }
 
+@mixin boton($color, $letra){
+display: inline-block;
+background-color: $color;
+color: $letra;
+padding: 0.5em 1em;
+border-radius: 1.5em;
+margin: 1em 0.5em;
+text-align: center;
+@extend .anima;
+&:hover{
+  background-color: $letra;
+  color: $color;
+  @extend .sombra;
+}
+}
+
+.btn{
+  @include boton($azul, $amarillo);
+  @extend .flechaLiga;
+}
+
+
+.flechaLiga{
+  position: relative;
+  &:after{
+    font-family: "Font Awesome 5 Free";
+    content: "\f061";
+    display: inline-block;
+    visibility: hidden;
+    vertical-align: middle;
+    font-weight: 900;
+    @extend .anima;
+    position: absolute;
+    transform: translateX(0px);
+  }
+
+  &:hover{
+
+    &:after {
+      visibility: visible;
+     transform: translateX(20px);
+    }
+  }
+}
 #menu{
   background-color: $amarillo;
   grid-column: 2;
@@ -223,12 +297,7 @@ i{
 }
 
 
-#hero{
-  background-color: $azul;
-  grid-column: 1/-1;
-  grid-row: 1;
-  height: 100vh;
-}
+
 
 // menu hamburguesa
 
@@ -306,18 +375,479 @@ button {
 
 //.............
 
+#hero{
+  background-color: $azul;
+  grid-column: 1/-1;
+  grid-row: 1;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  //justify-content: center;
+}
+
 //texto animado en header home
 
 .ml4 {
   position: relative;
+  color: #fff;
   font-weight: 900;
-  font-size: 4.5em;
+  font-size: calc(40px + (80 - 40) * ((100vw - 300px) / (1600 - 300)));
+  span{
+    width: calc(100vw - 20vw);
+    margin-left: calc(100vw / 100*10);
+    text-align: center;
+  }
 }
-.ml4 .letters {
+ .letters {
   position: absolute;
-  margin: auto;
+  
   left: 0;
   top: 0.3em;
   right: 0;
   opacity: 0; 
+}
+//galerias del home
+
+#galeriasHome{
+  h1{
+    grid-column: 2/span 1;
+    text-align: center;
+    font-weight: 700;
+  }
+}
+
+#slider{
+  grid-column: 2 / span 1;
+  @include cel{
+    grid-column: 1 / - 1;
+  }
+  display: grid;
+  grid-template-columns: 10% 1fr 10%;
+  margin-top: 2em;
+  
+  .item{
+    grid-column: 2 / span 1;
+    margin: 0.5em;
+    display: flex;
+    flex-direction: column;
+    @extend .anima;
+
+    img{
+      width:100%;
+      height:auto;
+      object-fit:cover;
+      @extend .anima;
+    }
+
+    &:hover{
+      transform: scale(0.97);
+      @extend .sombra;
+    }
+
+    &:hover img{
+      transform: scale(1.05);
+    }
+
+    &:hover .texto {
+      background-color: $azul;
+    }
+    
+  }
+  h2{
+    color: $amarillo;
+    font-weight: 700;
+    padding: 0.3em 0;
+    
+  }
+  .texto{
+    background-color: $gris;
+    padding: 2em 2em 0.5em;
+    color: #fff;
+    @extend .anima;
+  }
+  .catego{
+  display: flex;
+  flex-direction:row;
+  margin: 1em 0;
+  border-top: 1px solid $amarillo;
+  padding: 1em 0 0;
+  align-items: center;
+
+  img{
+    max-width: 40px;
+    height: auto;
+  }
+  }
+}
+
+#recuadrosIndex{
+  margin: 3em 0;
+  grid-template-columns: 10% repeat(4, 1fr) 10%;
+  position: relative;
+
+  &:before{
+    content: '';
+    position: absolute;
+    left: 15%;
+    top: 10%;
+    z-index: -1;
+    background:url(/img/fondo_patron.svg) repeat-x;
+    width: 69vw;
+    height: 75%;
+
+    @include tableta{
+      left: 10%;
+      top: 30%;
+      width: 80vw;
+      height: 85%;
+    }
+  }
+
+
+}
+
+.recuadro{
+color: #fff;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+padding: 1em;
+border-top: solid 1px #fff;
+border-bottom: solid 1px #fff;
+
+h2{
+  @extend .anima;
+}
+a{
+  color: #fff;
+}
+
+img{
+  max-width: 50px;
+  margin-right: 0.5em;
+}
+
+p{
+  break-before: always;
+  //pasamos con flex p hacia abajo
+}
+
+&:hover{
+  h2{
+    transform: scale(1.1);
+    font-weight: 700;
+  }
+}
+}
+
+#come, #hospedate, #conoce{
+  background-color: $azul;
+  padding: 3em;
+
+  }
+
+#come{
+  grid-column: 2 / span 2;
+  @include cel{
+    grid-column: 1 / 6;
+  }
+}
+
+#hospedate{
+  background-color: $amarillo;
+  .recuadro{
+    color: #3A00D6;
+    border-top: solid 1px $azul;
+    border-bottom: solid 1px $azul;
+    a{
+      color: $azul;
+    }
+  }
+  grid-column: 3 / span 2;
+  transform: translateY(-1em);
+  border-bottom: solid 1px #fff;
+  @include cel{
+    grid-column: 2 / -1;
+  transform: translateY(0);
+  }
+}
+#conoce{
+  grid-column: 4 / span 2;
+  transform: translateY(-2em);
+  @include cel{
+    grid-column: 1 / 6;
+  transform: translateY(0);
+  }
+}
+
+//eventos
+
+#eventos{
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5%;
+
+  @include tableta{
+    grid-template-columns: 40% 1fr;
+  }
+ 
+  h1{
+    grid-column: 1 / -1;
+    text-align: center;
+    font-weight: 700;
+    padding: 0em 0 1em;
+  }
+
+  #portadaEventos{
+     background-color: #3A00D6;  
+     grid-column: 1 / span 1; 
+
+     @include cel{
+       order: 1;
+       height: 200px;
+       grid-column: 1 / -1;
+     }
+  }
+  #eventosBandeja{
+    grid-column: 2 / -1;
+
+    @include cel{
+      grid-column: 1 / -1;
+    }
+
+    .evento:last-child{
+      margin-bottom: 0em;
+    }
+  }
+
+  .evento{
+display: flex;
+margin-bottom: 1.5em;
+
+    .fecha{
+      color: #fff;
+      background-color: $azul;
+      font-weight: 700;
+      text-align: center;
+      padding: 1em;
+      font-size: calc(22px + (32 - 22) * ((100vw - 300px) / (1600 - 300)));
+      width: 25%;
+    }
+
+    .eventoTxt{
+      background-color: $amarillo;
+      padding: 1em;
+      h2{
+        font-weight: 700;
+      }
+    }
+    &:nth-child(2n+1){
+      .fecha{
+        order: 1;
+      }
+    }
+  }
+}
+
+#tips{
+  h1{
+    grid-column: 1 / -1;
+    text-align: center;
+    font-weight: 700;
+    padding: 3em 0 1em;
+  }
+  grid-template-columns: repeat(4, 1fr) ;
+}
+#tipsBandeja{
+  grid-column: 1 / -1;
+  display: flex;
+  flex-flow: row wrap;
+  padding-bottom: 3em;
+
+  @include cel{
+    flex-flow: column wrap;
+  }
+
+  .tips{
+    margin: 0 0.8em;
+    box-sizing: border-box;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-bottom: solid 1px $azul;
+    background-color: #fff;
+    h2{
+      color: $azul;
+      margin: 0.7em 0;
+      font-weight: 700;
+    }
+    p{
+      font-weight: 300;
+      margin-bottom: 1em;
+    }
+
+    .btn{
+      margin-top: auto; // truco para bajar los items cuando la direccion es columsn
+    }
+
+   &:hover {
+      transform: scale(1.05);
+        @extend .sombra;
+        }
+
+  @include tableta{
+   flex: 0 0 45%;
+  }
+  @extend .anima;  
+  }
+
+  #bannerTips{
+  background-color: #3A00D6;
+  flex: 1;
+  @include cel{
+    margin-top: 2em;
+  }
+  }
+}
+
+#mastips{
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18vh;
+}
+
+
+//footer
+#footer{
+  margin-top: 6em;
+}
+
+#bandejaPie {
+  grid-column: 2 / span 1;
+  display: grid;
+  grid-template-columns: 10% repeat(3, 1fr) 10%;
+  grid-template-rows: repeat(4fr);
+  @include cel{
+    grid-column: 1 / -1;
+  }
+}
+
+#zLogo{
+  background-color: $amarillo;
+  transform: translateY(-30px);
+  grid-row: 1 / span 3;
+  grid-column: 2 / span 1;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img{
+    max-width: 70px;
+  }
+
+  @include cel{
+    width: 70%;
+    padding: 0.5em;
+  }
+}
+#redesPie{
+  background-color: $azul;
+  grid-row: 2 / span 1;
+  grid-column: 1 / -1;
+  color: #fff;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 10% 1fr 1fr repeat(3, auto);
+  @include cel{
+    grid-template-columns:  1fr 2fr repeat(3, auto);
+  }
+  
+  a{
+    color: #fff;
+    font-size: 1.5em;
+    margin: 0.2em;
+    @include cel{
+      grid-column: 3 / -1;
+      text-align: right;
+      padding: 0.5em 0.5em 0;
+    }
+  }
+  p{
+    font-size: 0.9em;
+    grid-column: 3 / span 1;
+    text-align: right;
+    padding: 0 1em;
+
+    @include cel{
+      grid-column: 2 / span 1;
+      grid-row: 1/ span 3;
+    }
+  }
+}
+
+#newsletter{
+  background-color: $gris;
+  grid-row: 3 / span 2;
+  grid-column: 1 / -1;
+  padding: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  h2{
+    color: $amarillo;
+    font-weight: 700;
+    grid-column: 2 / -1;
+    font-size: calc(30px + (38 - 30) * ((100vw - 300px) / (1600 - 300)));
+    padding: 0.4em 0;
+  }
+  p{
+    grid-column: 2 / -1;
+    color: #fff;
+  }
+  form{
+    grid-column: 2 / -1;
+    padding: 0.4em 0;
+  }
+}
+
+#promo{
+  grid-column: 1 / -1;
+  background-color:rgb(204, 211, 219);
+  height: 60vh;
+  display: flex;
+  padding: 1em;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h2{
+    font-weight: 700;
+    font-size: 2.3em;
+    text-align: center;
+  }
+}
+
+#pieFinal{
+  background-color: $amarillo;
+  grid-column: 2 / span 1;
+  width: 30%;
+  text-align: center;
+  padding: 2em;
+  font-size: 0.8em;
+  margin: 0 auto;
+  transform: translateY(-50px);
+  @include cel{
+    width: 70%;
+  }
+  p{
+    border-top: solid 1px $azul;
+    margin-top: 1em;
+    padding-top: 1em;
+  }
+  img{
+    max-width: 200px;
+    height:auto;
+  }
 }

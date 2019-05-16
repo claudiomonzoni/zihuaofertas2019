@@ -25,15 +25,35 @@ let abrirMenu = function(){
 //eventos
 menuCel.addEventListener('click', abrirMenu);
 
+
+//plugins
+
+const slideHome = new Siema ({
+  selector:'#slider',
+  duration: 500,
+  easing: 'ease-out',
+  perPage: {
+    400: 1,
+    600: 2,
+    1600: 3
+  },
+  startIndex: 0,
+  draggable: true,
+  loop: true
+  
+  });
+
+
+
 //animejs
 
 let ml4 = {};
 ml4.opacityIn = [0,1];
-ml4.scaleIn = [0.2, 1];
-ml4.scaleOut = 1.2;
+ml4.scaleIn = [0.6, 1];
+ml4.scaleOut = 1.1;
 ml4.durationIn = 800;
 ml4.durationOut = 600;
-ml4.delay = 500;
+ml4.delay = 800;
 
 anime.timeline({loop: true})
   .add({
