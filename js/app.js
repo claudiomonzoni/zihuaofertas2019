@@ -11,7 +11,14 @@ const ul = document.querySelector('#menu ul')
 //funciones
 let abrirMenu = function(){
   menuCel.classList.toggle('is-active')
-  menu.classList.toggle('cerrado')
+  
+  
+  if(menu.classList.contains('jsInicio')){
+    menu.classList.toggle('cerrado')
+  }else{
+    menu.classList.toggle('interior')
+  }
+
   ul.classList.toggle('animacion')
   logo.classList.toggle('animaLogo')
 
@@ -42,6 +49,78 @@ const slideHome = new Siema ({
   loop: true
   
   });
+
+
+
+
+// eventos interfaz
+
+//instanciar las dos clases
+
+
+class EventosHomeApi{
+  constructor(){
+      this.token = 'VJKJAMIJ7MUWMCWOTJOZ'
+      this.ordenar = 'date'
+  }
+
+  // obtener eventos
+  async obtenerEventos(evento){
+        
+    const respuestaEventos = await fetch(
+    `https://www.eventbriteapi.com/v3/events/search/?q=${evento}&sort_by=${this.ordenar}&token=${this.token}`
+    )
+    const eventos = await respuestaEventos.json()
+    return{
+        eventos
+    }
+}
+}
+
+
+
+class InterfazEventos{
+  constructor(){
+    this.init()
+    //la bandeja
+    this.bandeja = document.getElementById('eventosBandeja')
+    
+  }
+  //metodo para iniciar
+  init(){
+    api.obtenerEventos('ixtapa')
+    .then(datos => {
+
+      const losEventos = datos.eventos.events
+
+      losEventos.forEach(evento => {
+        //console.log(evento)
+        const fecha = new Date(evento.start.utc).toDateString()
+        this.bandeja.innerHTML += `
+        <div class="evento">
+         <div class="fecha">
+             <li>${fecha.substr(7, 3)}</li>
+             <li>${fecha.substr(4, 3)}</li>
+         </div>
+         <div class="eventoTxt">
+             <h2>${evento.name.text}</h2>
+             <p>
+                 ${evento.description.text.substr(0, 150)}
+                 
+             </p>
+             <hr>
+            <b>  <a href="${evento.url}" target="_blank" > liga al evento </a> </b>
+         </div>
+     </div>
+        `
+      });
+    } )
+  }
+
+}
+
+const api = new EventosHomeApi()
+const ui = new InterfazEventos()
 
 
 
