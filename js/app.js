@@ -60,7 +60,7 @@ const slideHome = new Siema ({
 
 class EventosHomeApi{
   constructor(){
-      this.token = 'VJKJAMIJ7MUWMCWOTJOZ'
+      this.token = 'VJKJAMIJ7MUWMCWOTJOZ' // "eventBriteToken"  environmet variable de netlify
       this.ordenar = 'date'
   }
 
@@ -123,6 +123,82 @@ const api = new EventosHomeApi()
 const ui = new InterfazEventos()
 
 
+// class mapa
+
+class Mapa{
+
+  constructor(){
+    this.mapa = this.inicializarMapa()
+    this.markers = new L.LayerGroup()
+  }
+
+  inicializarMapa() {
+    // Inicializar y obtener la propiedad del mapa
+    const map = L.map('mapa').setView([19.390519, -99.3739778], 12);
+    const enlaceMapa = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+    L.tileLayer(
+        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; ' + enlaceMapa + ' Contributors',
+        maxZoom: 20,
+        }).addTo(map);
+
+    return map;
+
+}
+
+obtenerDatos(){
+
+  const pines = {
+   resultados:[
+    {
+      latitude: "17.638660",
+      longitude: "-101.558700",
+      titulo: "Hotel Zihuatanejo Centro",
+      calle: "Colonia centro No.88 avenida Galeana Zihuatanejo Gro. C.P: 40880"
+      },
+      {
+      latitude: "20.638660",
+      longitude: "-103.558700",
+      titulo: "Hotel Ixtapa Centro",
+      calle: "Colonia centro No.88 avenida Galeana Zihuatanejo Gro. C.P: 40880"
+      }
+   ]
+  }
+ 
+  this.mostrarPines(pines.resultados)
+}
+
+mostrarPines(datos){
+  // limpio marker para mostrar otra busqueda
+  this.markers.clearLayers()
+
+      datos.forEach(dato => {
+      //destructurig para obtener las prop del obj
+      const {latitude, longitude, titulo, calle} = dato
+
+      // crear un globo de info
+      const globo = L.popup().setContent(`
+      <h3>${titulo} </h3>
+      <p> Calle: ${calle}</p>
+      `)
+      //agregar el pin por obj
+      // corchete porque es array
+      const marker = new L.marker([
+          parseFloat(latitude),
+          parseFloat(longitude),
+
+      ]).bindPopup(globo)
+      //agregamos cada pin al layer del constructor
+      this.markers.addLayer(marker)
+  });
+  this.markers.addTo(this.mapa)
+}
+}
+
+const mapa = new Mapa()
+document.addEventListener('DOMContentLoaded', ()=>{
+  mapa.obtenerDatos()
+})
 
 //animejs
 

@@ -59,6 +59,7 @@ body {
 h1, h2, h3 {
   font-family: 'Asap', sans-serif;
   line-height: calc(1.1em + (1.3 - 1.1) * ((100vw - 300px) / (1600 - 300)));
+  font-weight: 700;
 }
 
 h1 {
@@ -291,7 +292,7 @@ section {
 }
 
 #menu.interior {
-  width: calc(100vw);
+  width: 100%;
   -ms-flex-item-align: start;
       align-self: start;
   height: auto;
@@ -302,7 +303,7 @@ section {
 
 @media (min-width: 479px) {
   #menu.interior {
-    width: 100vw;
+    width: 100%;
     margin: 0;
     grid-column: 2 / -1;
   }
@@ -521,7 +522,6 @@ button {
   -ms-grid-column-span: 1;
   grid-column: 2/span 1;
   text-align: center;
-  font-weight: 700;
 }
 
 #slider {
@@ -578,7 +578,6 @@ button {
 
 #slider h2 {
   color: #FCF22B;
-  font-weight: 700;
   padding: 0.3em 0;
 }
 
@@ -668,7 +667,6 @@ button {
 .recuadro:hover h2 {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
-  font-weight: 700;
 }
 
 #come, #hospedate, #conoce {
@@ -752,7 +750,6 @@ button {
 #eventos h1 {
   grid-column: 1 / -1;
   text-align: center;
-  font-weight: 700;
   padding: 0em 0 1em;
 }
 
@@ -797,7 +794,6 @@ button {
 #eventos .evento .fecha {
   color: #fff;
   background-color: #3A00D6;
-  font-weight: 700;
   text-align: center;
   padding: 1em;
   font-size: calc(22px + (32 - 22) * ((100vw - 300px) / (1600 - 300)));
@@ -807,10 +803,6 @@ button {
 #eventos .evento .eventoTxt {
   background-color: #FCF22B;
   padding: 1em;
-}
-
-#eventos .evento .eventoTxt h2 {
-  font-weight: 700;
 }
 
 #eventos .evento:nth-child(2n+1) .fecha {
@@ -827,7 +819,6 @@ button {
 #tips h1 {
   grid-column: 1 / -1;
   text-align: center;
-  font-weight: 700;
   padding: 3em 0 1em;
 }
 
@@ -874,7 +865,6 @@ button {
 #tipsBandeja .tips h2 {
   color: #3A00D6;
   margin: 0.7em 0;
-  font-weight: 700;
 }
 
 #tipsBandeja .tips p {
@@ -917,6 +907,10 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -924,6 +918,8 @@ button {
       -ms-flex-align: center;
           align-items: center;
   height: 18vh;
+  margin: 2em 1em;
+  text-align: center;
 }
 
 #footer {
@@ -1051,7 +1047,6 @@ button {
 
 #newsletter h2 {
   color: #FCF22B;
-  font-weight: 700;
   grid-column: 2 / -1;
   font-size: calc(30px + (38 - 30) * ((100vw - 300px) / (1600 - 300)));
   padding: 0.4em 0;
@@ -1072,7 +1067,6 @@ input {
   padding: 0.8em;
   border-radius: 1.5em;
   font-size: 0.8em;
-  font-weight: 700;
   color: #3A00D6;
 }
 
@@ -1102,7 +1096,6 @@ input[type="button"] {
 }
 
 #promo h2 {
-  font-weight: 700;
   font-size: 2.3em;
   text-align: center;
 }
@@ -1136,5 +1129,179 @@ input[type="button"] {
 #pieFinal img {
   max-width: 200px;
   height: auto;
+}
+
+#heroInt {
+  background-color: #3A00D6;
+  grid-column: 1/-1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#BandejaInt {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / span 1;
+  background-color: #fff;
+  padding: 1.5em;
+  margin-top: -2em;
+}
+
+#BandejaInt h1 {
+  margin: 0.5em 0 0;
+  border-bottom: solid 1px #3A00D6;
+  padding-bottom: 1em;
+}
+
+#BandejaInt .ubicacion {
+  text-align: right;
+  padding: 0.5em 0 3em;
+}
+
+#BandejaInt p {
+  padding: 0 0 1.5em;
+  font-weight: 300;
+}
+
+.columnas2 {
+  -webkit-column-count: 1;
+          column-count: 1;
+}
+
+@media (min-width: 479px) {
+  .columnas2 {
+    -webkit-column-count: 2;
+            column-count: 2;
+  }
+}
+
+#galeriasInt {
+  -ms-grid-rows: 5% 1fr 1fr auto;
+      grid-template-rows: 5% 1fr 1fr auto;
+}
+
+#galeriasInt #slider {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  grid-row: 2 / span 2;
+}
+
+#galeriasInt #fondoServicioSlider {
+  background-color: #FCF22B;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
+  grid-row: 3 / span 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / span 2;
+}
+
+#galeriasInt #servicios {
+  background-color: #FCF22B;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 2;
+  grid-row: 4 / span 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / span 2;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10% 1fr 10%;
+      grid-template-columns: 10% 1fr 10%;
+}
+
+#galeriasInt #servicios h2 {
+  padding: 1em 0;
+}
+
+#galeriasInt #servicios .conteServicios {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / span 1;
+  padding: 2em 2.5em;
+}
+
+#acercade #bandejadatosInt {
+  background-color: #d6dbe2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/span 1;
+  padding: 10%;
+}
+
+#acercade #bandejadatosInt img {
+  max-width: 180px;
+  padding: 0.5em 0;
+}
+
+#acercade #bandejadatosInt h2, #acercade #bandejadatosInt h3, #acercade #bandejadatosInt p, #acercade #bandejadatosInt li {
+  padding-bottom: 1em;
+}
+
+#acercade #bandejadatosInt hr {
+  border-top: solid 1px #3A00D6;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  padding-bottom: 1em;
+}
+
+#MapaSection {
+  -ms-grid-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr auto;
+}
+
+#MapaSection:before {
+  content: '';
+  background-color: #FCF22B;
+  grid-column: 2 / -1;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  grid-row: 1/ span 3;
+}
+
+#mapaArea {
+  grid-column: 2 / -1;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/ span 1;
+  padding: 2em;
+}
+
+#mapa {
+  background-color: #3A00D6;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / span 2;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/ span 1;
+  height: 60vh;
+}
+
+#lugaresInteres {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / span 1;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/ span 1;
+  padding: 2em;
+}
+
+.listas {
+  padding: 2em 0;
+}
+
+.listas li {
+  border-bottom: dashed 1px #8393A7;
+  padding: 0.5em 0;
 }
 /*# sourceMappingURL=estilos.css.map */
