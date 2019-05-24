@@ -75,7 +75,7 @@ h1{
   span{
     display: flex;
     justify-content: center;
-    margin: 1.5em 0 0.5em;
+    margin: 1.5em 0 0 0;
   }
 
   img{
@@ -652,9 +652,7 @@ p{
      grid-column: 1 / span 1; 
 
      @include cel{
-       order: 1;
-       height: 200px;
-       grid-column: 1 / -1;
+      display: none;
      }
   }
   #eventosBandeja{

@@ -73,7 +73,7 @@ h1 span {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 1.5em 0 0.5em;
+  margin: 1.5em 0 0 0;
 }
 
 h1 img {
@@ -762,11 +762,7 @@ button {
 
 @media (max-width: 479px) {
   #eventos #portadaEventos {
-    -webkit-box-ordinal-group: 2;
-        -ms-flex-order: 1;
-            order: 1;
-    height: 200px;
-    grid-column: 1 / -1;
+    display: none;
   }
 }
 
