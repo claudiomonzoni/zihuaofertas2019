@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ixtapa Zihuatanejo | Hoteles</title>
+    <title>Ixtapa Zihuatanejo | hoteles</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
     <link rel="stylesheet" href="css/estilos.css">
@@ -59,123 +59,98 @@
         </div>
 
 </section>
-<section>
 
-    <div id="BandejaInt">
- <h1>Hospedate en el Hotel Zihuatanejo Centro desde $700 por noche</h1>
-    <div class="ubicacion">Zihuatanejo</div>
 
-    <div class="columnas2">
-            <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum voluptatem quasi ea, similique nulla nesciunt dolor illum dolores nam, non iure.
-                </p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, molestiae. Commodi praesentium deserunt aperiam voluptates possimus, vitae id odio cumque voluptas ea fugiat voluptatem dolorem aliquam facilis minus quam beatae numquam ab. Quis molestiae porro voluptate, labore quam enim ex iusto dolor ducimus rerum animi quaerat eveniet blanditiis similique, cum dignissimos non excepturi officiis repudiandae commodi. Exercitationem expedita quis repellat.</p>
+<section id="categoria">
+    
+    <h1><span><img src="img/hospedajeIcono.svg" alt="Hoteles en Ixtapa Zihuatenejo"></span>Ofertas más recientes</h1>
+
+    <div id="filtro">
+        <h3>filtrar por:</h3>
+        <hr>
+        <ul>
+            <li>
+                <input type="checkbox" name="Descuentos" value="Descuentos"> Descuentos
+            </li>
+            <li>
+                <input type="checkbox" name="Paquetes" value="Paquetes"> Paquetes
+            </li>
+            <li>
+                <input type="checkbox" name="promociones" value="promociones"> Promociones
+            </li>
+            <li>
+                <input type="checkbox" name="todo" value="todo" checked> Todo
+            </li>
+        </ul>
     </div>
+
+    <div id="tarjetas">
+
+        <div class="tarjeta">
+
+            <div class="conteIma">
+                <img src="img/muestra.jpg" alt="{{titulo}}">
+            </div>
+
+            <div class="info">
+                <a href="#"><h2>Hospedate en Ixtapa desde 800MXN.</h2></a>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur in, nihil architecto commodi repellendus sunt qui ipsa quis dolores iusto?</p>
+            </div>
+
+            <p class="cat">
+                promociones
+            </p>
+
+        </div>
+
+        <div class="tarjeta">
+
+                <div class="conteIma">
+                    <img src="img/muestra.jpg" alt="{{titulo}}">
+                </div>
+    
+                <div class="info">
+                    <a href="#"><h2>Hospedate en Zihuatanejo desde 800MXN.</h2></a>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur in, nihil architecto commodi repellendus sunt qui ipsa quis dolores iusto?</p>
+                </div>
+    
+                <p class="cat">
+                    promociones
+                </p>
+    
+            </div>
+
 
     </div>
    
 </section>
 
-<section id="galeriasInt">
 
-        <div id="slider">
-        
-            <div class="item">
-                    <img src="https://via.placeholder.com/800x600" alt="{{titulo}}">
-        
+<section id="cuadrosSecc">
+
+    <div  class="recuadroInt" >
+            <div class="recuadro">
+                <img src="img/restauranteIcono_blanco.svg" alt="Restaurantes en Ixtapa Zihuatanejo">
+               <a href="#"> <h2>come</h2></a>
+                <p>Encuentra donde comer y beber en tus vacaciones por Ixtapa Zihutanajo.</p>
             </div>
-        
-            <div class="item">
-                            <img src="https://via.placeholder.com/800x600" alt="{{titulo}}">
-            
-                </div>
-        
-                <div class="item">
-                                <img src="img/muestra.jpg" alt="{{titulo}}">
-                    </div>
-        
-        </div>
-        <div id="fondoServicioSlider"></div>
-        <div id="servicios">
-                <div class="conteServicios">
-                    <h2>Servicios de {{ Zihuatanejo Centro}}</h2>
-                       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe, debitis. Veritatis ullam facilis cum magni pariatur dolorum omnis.</p>
-                       <ul class="columnas2 listas">
-                           <li>Aceptan tarjetas de credito</li>
-                           <li>Wi-Fi</li>
-                           <li>Hablamos Ingles</li>
-                           <li>Ubicacíon centrica</li>
-                           <li>Alberca</li>
-                           <li>item</li>
-                           <li>item</li>
-                           <li>item</li>
-                       </ul>
-                </div>
-        </div>
+    </div>
 
-        </section>
-        <section id="acercade">
-            <div id="bandejadatosInt">
-                    <img src="img/ZihuaOfertasLogo.svg" alt="">
-                    <h2>Acerca de Hotel Zihuatanejo Centro</h2>
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis magni aliquid illo velit! Rem ut numquam tenetur dolorem ipsum. Reiciendis incidunt deleniti maiores, dolorum eligendi atque officia nemo explicabo odio officiis distinctio saepe vitae dolorem. Ducimus aspernatur soluta sed, minima illum quod, veniam nemo quae error, sequi voluptatem.
-                    </p>
-                    <hr>
 
-                    <h3>Contacta</h3>
-                    <li><b>Sitio web:</b> www.zihuacentro.com</li>
-                    <li><b>Teléfono:</b> (755) 5547.896</li>
-                    <li><b>Dirección:</b> Colonia centro No.88 avenida Galeana Zihuatanejo Gro. C.P: 40880</li>
+    <div class="recuadroInt" >
+            <div class="recuadro">
+                <img src="img/tourIcono_blanco.svg" alt="Restaurantes en Ixtapa Zihuatanejo">
+               <a href="#"> <h2>conoce</h2></a>
+                <p>Ofertas de tours, aventura, ecoturismo y guias de Ixtapa Zihuatanejo.</p>
+            </div>
+    </div>
 
-                    <hr>
-
-                    <h3>Redes sociales</h3>
-                    <a href="#" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                     </a>
     
-                     <a href="#" target="_blank">
-                        <i class="fab fa-facebook-square"></i>
-                     </a>
-    
-                     <a href="#" target="_blank">
-                        <i class="fab fa-twitter"></i>
-                     </a>
 
-            </div>
-            
-        </section>
+</section>
 
-        <section id="MapaSection">
-            <div id="mapaArea">
-                <h4><i class="fas fa-map-marker-alt"></i> Ubicacíon</h4>
-            </div>
-            <div id="mapa">
-                mapa aqui
-            </div>
-            <div id="lugaresInteres">
-                
-                <h3><i class="fas fa-camera"></i> Lugares de interes cercanos a Hotel Zihuatanejo Centro</h3>
-                <ul class="columnas2 listas">
-                    <li><a href="">Lugares</a></li>
-                    <li><a href="">Lugares</a></li>
-                    <li><a href="">Lugares</a></li>
-                    <li><a href="">Lugares</a></li>
-                    <li><a href="">Lugares</a></li>
-                    <li><a href="">Lugares</a></li>
-                    <li><a href="">Lugares</a></li>
-                </ul>
-            </div>
 
-        </section>
-      
- 
-        <div id="mastips">
-            <p>Agrega este negocio a tus favoritos para recordarlo despues y obten un 10% de descuento.</p>
-                <a href="#" class="btn"><i class="fas fa-heart"></i> Guardame en favoritos</a>
-        </div>
-       
+
 
 <footer>
     <section id="footer">
