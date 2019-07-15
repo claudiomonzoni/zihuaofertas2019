@@ -151,7 +151,7 @@ class InterfazEventos {
   }
   //metodo para iniciar
   init() {
-    api.obtenerEventos("ixtapa").then(datos => {
+    api.obtenerEventos("ixtapa-zihuatanejo").then(datos => {
       const losEventos = datos.eventos.events;
 
       losEventos.forEach(evento => {
